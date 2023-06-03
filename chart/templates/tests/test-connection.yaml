@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "ziwei.fullname" . }}-test-connection"
+  labels:
+    {{- include "ziwei.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "ziwei.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never

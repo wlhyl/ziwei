@@ -1,0 +1,27 @@
+[package]
+name = "ziwei"
+version = "0.1.0"
+edition = "2021"
+description="紫微斗数api"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ganzhiwuxing = { git = "https://github.com/wlhyl/ganzhiwuxin.git", branch = "rust" }
+lunar_calendar = { git = "https://github.com/wlhyl/lunar-calendar.git", branch = "rust" }
+
+actix-cors = "0.6.4"
+actix-web = "4.3.1"
+clap = { version = "4.1.6", features = ["derive"] }
+dotenv = "0.15.0"
+
+log = "0.4.17"
+log4rs = "1.2.0"
+serde = { version = "1.0.152", features = ["derive"] }
+
+actix-web-validator = "5.0.1"
+validator = { version = "0.16.0", features = ["derive", "unic"] }
+
+utoipa = {version="3.3.0", features = ["actix_extras"]}
+utoipa-swagger-ui = {version="3.1.3", features = ["actix-web"]}
+
