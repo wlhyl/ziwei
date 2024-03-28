@@ -1,0 +1,41 @@
+[package]
+name = "ziwei"
+version = "0.1.0"
+edition = "2021"
+description = "紫微斗数api"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+serde = ["dep:serde", "horo_date_time/serde", "lunar_calendar/serde"]
+swagger = ["dep:utoipa", "horo_date_time/swagger"]
+
+[dependencies]
+# entity = { path = "../entity" }
+ganzhiwuxing = { git = "https://github.com/wlhyl/ganzhiwuxin.git", branch = "rust" }
+lunar_calendar = { git = "https://github.com/wlhyl/lunar-calendar.git", branch = "rust" }
+horo_date_time = { git = "https://github.com/wlhyl/horo.git" }
+
+serde = { version = "1.0.197", features = ["derive"], optional = true }
+utoipa = { version = "*", optional = true }
+
+# actix-cors = "0.7.0"
+# actix-web = "4.5.1"
+# clap = { version = "4.5.3", features = ["derive"] }
+# dotenv = "0.15.0"
+
+# log = "0.4.21"
+# log4rs = "1.3.0"
+
+
+# actix-web-validator = "5.0.1"
+# validator = { version = "0.16.1", features = ["derive", "unic"] }
+
+# utoipa = { version = "4.2.0", features = ["actix_extras"] }
+# utoipa-swagger-ui = { version = "6.0.0", features = ["actix-web"] }
+# sea-orm = { version = "0.12.15", features = [
+#     "sqlx-sqlite",
+#     "macros",
+#     "runtime-actix-native-tls",
+#     # "debug-print",
+# ] }

@@ -1,0 +1,168 @@
+$wdith: 25%;
+$heigth: 25%;
+
+.context {
+    display: flex;
+    justify-content: center;
+}
+
+.pan {
+    position: relative;
+    // top: $heigth/10;
+    // width: 200px*4;
+    // height: 300px*4;
+    // background-color: aqua;
+}
+
+.zi {
+    position: absolute;
+    top: $heigth*3;
+    left: $wdith*2;
+    width: $wdith;
+    height: $heigth;
+    // top: 25%*3;
+    // left: 25%*2;
+    // width: 25%;
+    // height: 25%;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.chou {
+    position: absolute;
+    top: $heigth*3;
+    left: $wdith;
+    width: $wdith;
+    height: $heigth;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.ying {
+    position: absolute;
+    top: $heigth*3;
+    left: 0;
+    width: $wdith;
+    height: $heigth;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+
+.mao {
+    position: absolute;
+    top: $heigth*2;
+    left: 0;
+    width: $wdith;
+    height: $heigth;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+
+.chen {
+    position: absolute;
+    top: $heigth;
+    left: 0;
+    width: $wdith;
+    height: $heigth;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+
+.si {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: $wdith;
+    height: $heigth;
+    // background-color: blue;
+    border: 1px solid black;
+    // border-top: 1px solid black;
+    // border-left: 1px solid black;
+}
+
+.wu {
+    position: absolute;
+    top: 0px;
+    left: $wdith;
+    width: $wdith;
+    height: $heigth;
+    // background-color: red;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.wei {
+    position: absolute;
+    top: 0px;
+    left: $wdith*2;
+    width: $wdith;
+    height: $heigth;
+    // background-color: red;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.shen {
+    position: absolute;
+    top: 0px;
+    left: $wdith*3;
+    width: $wdith;
+    height: $heigth;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+
+.you {
+    position: absolute;
+    top: $heigth;
+    left: $wdith*3;
+    width: $wdith;
+    height: $heigth;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.xu {
+    position: absolute;
+    top: $heigth*2;
+    left: $wdith*3;
+    width: $wdith;
+    height: $heigth;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.hai {
+    position: absolute;
+    top: $heigth*3;
+    left: $wdith*3;
+    width: $wdith;
+    height: $heigth;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.info {
+    position: absolute;
+    top: $heigth;
+    left: $wdith;
+    width: $wdith*2;
+    height: $heigth*2;
+}

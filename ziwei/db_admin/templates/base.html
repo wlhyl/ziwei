@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>紫微斗数星曜信息数据库管理</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+        </script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1 class="text-center">紫微斗数星曜信息数据库</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav class="nav flex-column nav-fill nav-pills">
+                    <a class="nav-link" aria-current="首页" href="/">首页</a>
+                    <a class="nav-link {% block active_star %}{% endblock active_star %}" href="/stars">星曜</a>
+                    <a class="nav-link {% block active_category %}{% endblock active_category %}"
+                        href="/categories">分类</a>
+                    <a class="nav-link {% block active_power %}{% endblock active_power %}" href="/powers">力量</a>
+                    <a class="nav-link {% block active_vstar %}{% endblock active_vstar %}" href="/vstars">化曜</a>
+                    <a class="nav-link {% block active_house %}{% endblock active_house %}" href="/houses">宫位</a>
+                    <a class="nav-link {% block active_gan %}{% endblock active_gan %}" href="/gan">天干</a>
+                </nav>
+            </div>
+            <div class="col-10">
+                {% block content %}{% endblock content %}
+            </div>
+        </div>
+</body>
+
+
+
+
+</html>

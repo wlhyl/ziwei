@@ -1,0 +1,31 @@
+{% extends "star/edit_star.html" %}
+
+{% block name_error %}
+{% if name_error!="" %}
+<div class="text-danger">{{ name_error }}</div>
+{% endif %}
+{% endblock name_error %}
+
+{% block category_error %}
+{% if category_error!="" %}
+<div class="text-danger">{{ category_error }}</div>
+{% endif %}
+{% endblock category_error %}
+
+{% block wu_xing_error %}
+{% if wu_xing_error!="" %}
+<div class="text-danger">{{ wu_xing_error }}</div>
+{% endif %}
+{% endblock wu_xing_error %}
+
+{% block lord_error %}
+{% if lord_error!="" %}
+<div class="text-danger">{{ lord_error }}</div>
+{% endif %}
+{% endblock lord_error %}
+
+{% block describe_error %}
+{% if describe_error!="" %}
+<div class="text-danger">{{ describe_error }}</div>
+{% endif %}
+{% endblock describe_error %}

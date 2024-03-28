@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{title}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-alert [isOpen]="isAlertOpen" header="Alert" subHeader="错误！" [message]="message" [buttons]="alertButtons"
+    (didDismiss)="isAlertOpen=false"></ion-alert>
+
+  <div class="ion-text-center" *ngIf="loading">
+    <ion-label>获取星盘</ion-label>
+    <ion-spinner name="bubbles"></ion-spinner>
+  </div>
+
+  <div class="context">
+    <div class="pan" *ngIf="pan" [ngStyle]="{ 'width': width, 'height': height}">
+      <app-house class="zi" [name]="pan.houses[10]" [gan]="pan.gong_gan[10]" zhi="子"
+        [stars]="pan.stars[10]"></app-house>
+      <app-house class="chou" [name]="pan.houses[11]" [gan]="pan.gong_gan[11]" zhi="丑"
+        [stars]="pan.stars[11]"></app-house>
+      <app-house class="ying" [name]="pan.houses[0]" [gan]="pan.gong_gan[0]" zhi="寅" [stars]="pan.stars[0]"></app-house>
+      <app-house class="mao" [name]="pan.houses[1]" [gan]="pan.gong_gan[1]" zhi="卯" [stars]="pan.stars[1]"></app-house>
+      <app-house class="chen" [name]="pan.houses[2]" [gan]="pan.gong_gan[2]" zhi="辰" [stars]="pan.stars[2]"></app-house>
+      <app-house class="si" [name]="pan.houses[3]" [gan]="pan.gong_gan[3]" zhi="巳" [stars]="pan.stars[3]"></app-house>
+      <app-house class="wu" [name]="pan.houses[4]" [gan]="pan.gong_gan[4]" zhi="午" [stars]="pan.stars[4]"></app-house>
+      <app-house class="wei" [name]="pan.houses[5]" [gan]="pan.gong_gan[5]" zhi="未" [stars]="pan.stars[5]"></app-house>
+      <app-house class="shen" [name]="pan.houses[6]" [gan]="pan.gong_gan[6]" zhi="申" [stars]="pan.stars[6]"></app-house>
+      <app-house class="you" [name]="pan.houses[7]" [gan]="pan.gong_gan[7]" zhi="酉" [stars]="pan.stars[7]"></app-house>
+      <app-house class="xu" [name]="pan.houses[8]" [gan]="pan.gong_gan[8]" zhi="戌" [stars]="pan.stars[8]"></app-house>
+      <app-house class="hai" [name]="pan.houses[9]" [gan]="pan.gong_gan[9]" zhi="亥" [stars]="pan.stars[9]"></app-house>
+      <app-info class="info" [pan]="pan"></app-info>
+
+
+    </div>
+  </div>
+
+
+</ion-content>

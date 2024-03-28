@@ -97,7 +97,9 @@ log:
   level: info
 
 swe:
-  semo_18.se1
-  semom48.se1
-  sepl_18.se1
-  seplm48.se1
+  uri: "https://raw.githubusercontent.com/aloistr/swisseph/master/ephe"
+  files:
+    semo_18.se1
+    semom48.se1
+    sepl_18.se1
+    seplm48.se1

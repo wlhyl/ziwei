@@ -1,0 +1,8 @@
+target
+.env
+.dockerignore 
+.git 
+.gitignore
+Dockerfile 
+libswe.so
+Cargo.lock

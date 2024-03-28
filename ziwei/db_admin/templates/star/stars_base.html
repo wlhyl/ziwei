@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block active_star %}active{% endblock active_star %}
+{% block content %}
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link {% block active_star_tab %}{% endblock active_star_tab %}" aria-current="星曜"
+            href="/stars?list=stars">星曜</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% block active_power_tab %}{% endblock active_power_tab %}"
+            href="/stars?list=powers">星曜力量</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% block active_vstar_tab %}{% endblock active_vstar_tab %}" href="/stars?list=vstars">化曜</a>
+    </li>
+</ul>
+
+{% if error_message!="" %}
+<div class="alert alert-warning" role="alert">
+    {{error_message}}
+</div>
+{% else %}
+{% block tab_content %}{% endblock tab_content %}
+{% endif %}
+
+{% endblock content %}

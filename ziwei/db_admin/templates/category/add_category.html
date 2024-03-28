@@ -1,0 +1,13 @@
+{% extends "category/categories.html" %}
+
+{% block name_error %}
+{% if name_error !="" %}
+<div class="text-danger">{{ name_error }}</div>
+{% endif %}
+{% endblock name_error %}
+
+{% block describe_error %}
+{% if describe_error !="" %}
+<div class="text-danger">{{ describe_error }}</div>
+{% endif %}
+{% endblock describe_error %}

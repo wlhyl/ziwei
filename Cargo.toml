@@ -1,0 +1,5 @@
+[workspace]
+resolver = "2"
+
+# members = ["migration", "entity", "db_admin", "api", "ziwei"]
+members = ["api", "ziwei"]

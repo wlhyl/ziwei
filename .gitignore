@@ -1,1 +1,10 @@
 .DS_Store
+
+/target
+/Cargo.lock
+
+log4rs.yaml
+
+.env
+
+bak

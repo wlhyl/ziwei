@@ -1,0 +1,27 @@
+<div class="house" (click)="houseClick()">
+  <div class="star">
+    <div *ngFor="let star of stars; let i=index;" [ngClass]="star.category">
+
+      <div *ngFor=" let vstar of [vStar(star.name)]" class="star_name"
+        [ngClass]="{ 'gong_gan_lu': vstar==='禄', 'gong_gan_quan': vstar==='权', 'gong_gan_ke': vstar==='科', 'gong_gan_ji': vstar==='忌' }"
+        (click)="showDescribe(i)">
+        <div>{{star.name[0]}}</div>
+        <div>{{star.name[1]}}</div>
+      </div>
+      <div style="color: red;">{{star.power}}</div>
+      <div [class.v_star]="star.v_star">{{star.v_star?star.v_star:'&ensp;'}}</div>
+      <div [class.process_v_star]="star.process_v_star">{{star.process_v_star? star.process_v_star: '&ensp;' }}</div>
+      <div class="process_year_v_star">{{star.process_year_v_star}}</div>
+    </div>
+  </div>
+
+  <div class="gan_zhi">
+    <div> {{ gan}}</div>
+    <div> {{zhi}}</div>
+  </div>
+  <div class="name">
+    <div> {{name }}</div>
+  </div>
+
+  <div *ngIf="isShowDescrible" class="describe" (click)="closeDescribe()">{{describe}}</div>
+</div>

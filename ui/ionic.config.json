@@ -1,0 +1,7 @@
+{
+  "name": "ziwei",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

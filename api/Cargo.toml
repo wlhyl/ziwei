@@ -1,27 +1,55 @@
 [package]
-name = "ziwei"
+name = "ziwei_api"
 version = "0.1.0"
 edition = "2021"
-description="紫微斗数api"
+description = "紫微斗数api"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[features]
+swagger = [
+    "dep:utoipa",
+    "dep:utoipa-swagger-ui",
+    "horo_date_time/swagger",
+    "lunar_calendar/swagger",
+    "ganzhiwuxing/swagger",
+    "ziwei/swagger",
+]
+cors = ["dep:actix-cors"]
+
 [dependencies]
+# entity = { path = "../entity" }
 ganzhiwuxing = { git = "https://github.com/wlhyl/ganzhiwuxin.git", branch = "rust" }
 lunar_calendar = { git = "https://github.com/wlhyl/lunar-calendar.git", branch = "rust" }
+horo_date_time = { git = "https://github.com/wlhyl/horo.git", features = [
+    "serde",
+] }
 
-actix-cors = "0.6.4"
-actix-web = "4.3.1"
-clap = { version = "4.1.6", features = ["derive"] }
+ziwei = { path = "../ziwei", features = ["serde"] }
+
+actix-cors = { version = "0.7.0", optional = true }
+actix-web = "4.5.1"
+clap = { version = "4.5.3", features = ["derive"] }
 dotenv = "0.15.0"
 
-log = "0.4.17"
-log4rs = "1.2.0"
-serde = { version = "1.0.152", features = ["derive"] }
+log = "0.4.21"
+log4rs = "1.3.0"
+serde = { version = "1.0.197", features = ["derive"] }
 
 actix-web-validator = "5.0.1"
-validator = { version = "0.16.0", features = ["derive", "unic"] }
+validator = { version = "0.16.1", features = ["derive", "unic"] }
 
-utoipa = {version="3.3.0", features = ["actix_extras"]}
-utoipa-swagger-ui = {version="3.1.3", features = ["actix-web"]}
+# swagger
+utoipa = { version = "4.2.0", features = ["actix_extras"], optional = true }
+utoipa-swagger-ui = { version = "6.0.0", features = [
+    "actix-web",
+], optional = true }
 
+# utoipa = { version = "4.2.0", features = ["actix_extras"] }
+# utoipa-swagger-ui = { version = "6.0.0", features = ["actix-web"] }
+# sea-orm = { version = "0.12.15", features = [
+#     "sqlx-sqlite",
+#     "macros",
+#     "runtime-actix-native-tls",
+#     # "debug-print",
+# ] }

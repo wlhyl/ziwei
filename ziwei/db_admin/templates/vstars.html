@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block active_vstar %}active{% endblock active_vstar %}
+{% block content %}
+<h4 class="text-center">化曜</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">名称</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for vstar in vstars %}
+        <tr>
+            <th scope="row">{{ vstar.id }}</th>
+            <td>{{ vstar.name }}</td>
+            <td>
+                <form action="/vstars/{{ vstar.id}}" method="post">
+                    <input type="number" value="{{ vstar.id}}" hidden />
+                    <button type="submit" class="btn btn-outline-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-trash-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z">
+                            </path>
+                        </svg>
+                        <span class="visually-hidden">删除</span>
+                    </button>
+                </form>
+            </td>
+
+        </tr>
+        {% endfor %}
+        <tr>
+            <th scope="row">#</th>
+            <td colspan="2">
+                <form method="post" action="/vstars">
+                    <div class="row">
+                        <div class="col">
+                            <select class="form-select" aria-label="化曜" name="name">
+                                <option value="禄" selected>禄</option>
+                                <option value="权">权</option>
+                                <option value="科">科</option>
+                                <option value="忌">忌</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary">新增</button>
+                        </div>
+                    </div>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endblock content %}

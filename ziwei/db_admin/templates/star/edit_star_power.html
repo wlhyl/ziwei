@@ -1,0 +1,91 @@
+{% extends "star/stars_base.html" %}
+
+{% block active_power_tab %}active{% endblock active_power_tab %}
+
+{% block tab_content %}
+
+<h4 class="text-center">编辑星曜力量</h4>
+<table class="table" id="power_table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">名称</th>
+            <th scope="col">宫位</th>
+            <th scope="col">力量</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in star_powers %}
+        <tr>
+            <th scope="row">{{ item.star_id }}</th>
+            {% if item.star_id == edit_star_id and item.house_id == edit_house_id %}
+            <td>{{ item.star }}</td>
+            <td>{{ item.house }} </td>
+            <td>
+                <select class="form-select" aria-label="力量" id="power" name="power">
+                    {% for power in powers %}
+                    <option value="{{ power.id }}" {% if power.name==item.power %} selected {% endif %}>{{ power.name }}</option>
+                    {% else %}
+                    <option value="-1">请先创建力量</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <button type="submit" class="btn btn-outline-secondary" onclick="update({{item.star_id}}, {{item.house_id}})">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-check-lg" viewBox="0 0 16 16">
+                        <path
+                            d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z">
+                        </path>
+                    </svg>
+                    <span class="visually-hidden">修改星曜分类</span>
+                </button>
+            </td>
+            {% else %}
+            <td>{{ item.star }}</td>
+            <td>{{ item.house }} </td>
+            <td>{{ item.power }}</td>
+            <td>
+                <form action="/stars/powers/edit" method="get">
+                    <input type="text" name="star_id" value="{{ item.star_id }}" hidden />
+                    <input type="text" name="house_id" value="{{ item.house_id }}" hidden />
+                    <button type="submit" class="btn btn-outline-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z">
+                            </path>
+                        </svg>
+                        <span class="visually-hidden">编辑</span>
+                    </button>
+                </form>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<script>
+    function update(star_id, house_id) {
+        var power_id = Number($("#power ").val()); //获取Select选择的索引值
+        $.ajax({
+            type: "put",
+            contentType: "Content-Type: application/json",
+            url: "/api/stars/power",
+            data: JSON.stringify({
+                star_id,
+                house_id,
+                power_id
+            }),
+            success: function (result) {
+                $(location).attr("href", "/stars?list=powers")
+            },
+            error: function (e) {
+                var el = `<div class="alert alert-warning alert-dismissible fade show" role="alert">${e.responseText}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
+                $(el).insertAfter("#power_table");
+            }
+        });
+    }
+</script>
+{% endblock tab_content %}

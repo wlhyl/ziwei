@@ -1,0 +1,29 @@
+[package]
+name = "db_admin"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+entity = { path = "../entity" }
+
+actix-web = "4.5.1"
+dotenv = "0.15.0"
+clap = { version = "4.5.3", features = ["derive"] }
+log = "0.4.21"
+log4rs = "1.3.0"
+sea-orm = { version = "0.12.15", features = [
+    "sqlx-sqlite",
+    "macros",
+    "runtime-actix-native-tls",
+    # "debug-print",
+] }
+tera = "1.19.1"
+actix-web-lab = "0.20.2"
+serde = { version = "1.0.197", features = ["derive"] }
+
+
+# 验证器
+actix-web-validator = "5.0.1"
+validator = { version = "0.16.1", features = ["derive", "unic"] }

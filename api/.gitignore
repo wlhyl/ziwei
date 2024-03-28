@@ -1,5 +1,0 @@
-/target
-libswe.so
-Cargo.lock
-log4rs.yaml
-.env

@@ -1,0 +1,140 @@
+{% extends "star/stars_base.html" %}
+
+{% block active_star_tab %}active{% endblock active_star_tab %}
+
+{% block tab_content %}
+
+{% if id==0 %}
+<h4 class="text-center">新增星曜</h4>
+{% else %}
+<h4 class="text-center">编辑星曜</h4>
+{% endif %}
+
+<div class="container" id="container">
+    <div class="row my-1">
+        <div class="col-auto">
+            <label for="name" class="col-form-label">星曜名称</label>
+        </div>
+        <div class="col">
+            {% if id==0%}
+            <input type="text" id="name" name="name" class="form-control" aria-labelledby="星曜名称" value="{{ name }}" />
+            {% else %}
+            <input type="text" id="name" name="name" class="form-control" aria-labelledby="星曜名称" value="{{ name }}"
+                disabled />
+            {% endif %}
+        </div>
+        {% block name_error %}{% endblock name_error %}
+    </div>
+
+    <div class="row my-1">
+        <div class="col-auto">
+            <label for="category" class="col-form-label">星曜分类</label>
+        </div>
+        <div class="col">
+            <select class="form-select" aria-label="星曜分类" id="category" name="category">
+                {% for item in categories %}
+                <option value="{{ item.id }}" {% if category==item.id %} selected {% endif %}>{{ item.name }}</option>
+                {% else %}
+                <option value="-1">请先创建星曜分类</option>
+                {% endfor %}
+            </select>
+            {% block category_error %}{% endblock category_error %}
+        </div>
+    </div>
+
+    <div class="row my-1">
+        <div class="col-auto">
+            <label for="wu_xing" class="col-form-label">星曜五行</label>
+        </div>
+        <div class="col">
+            {%set wu_xing_list=["木", "火", "土", "金", "水"]%}
+            <select class="form-select" aria-label="星曜五行" id="wu_xing" name="wu_xing">
+                {% for item in wu_xing_list %}
+                <option value="{{ item }}" {% if item==wu_xing %}selected{% endif %}>{{ item }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% block wu_xing_error %}{% endblock wu_xing_error %}
+    </div>
+
+    <div class="row my-1">
+        <div class="col-auto">
+            <label for="lord" class="col-form-label">星曜宫主</label>
+        </div>
+        <div class="col">
+            <input type="text" id="lord" name="lord" class="form-control" aria-labelledby="星曜宫主" value="{{ lord }}">
+        </div>
+        {% block lord_error %}{% endblock lord_error %}
+    </div>
+
+    <div class="row my-1">
+        <div class="col-auto">
+            <label for="describe" class="col-form-label">星曜说明</label>
+        </div>
+        <div class="col">
+            <textarea class="form-control" id="describe" name="describe">{{ describe }}</textarea>
+        </div>
+        {% block describe_error %}{% endblock describe_error %}
+    </div>
+
+    <button type="submit" class="btn btn-primary" onclick={%if id==0 %}"add()"{%else%}"update()"{% endif %}>提交</button>
+
+</div>
+<script>
+    {% if id == 0 %}
+    function add() {
+        var name = $("#name ").val()
+        var category_id = Number($("#category ").val())
+        var wu_xing = $("#wu_xing ").val()
+        var lord = $("#lord ").val()
+        var describe = $("#describe ").val()
+        $.ajax({
+            type: "post",
+            contentType: "Content-Type: application/json",
+            url: "/api/stars",
+            data: JSON.stringify({
+                name,
+                category_id,
+                wu_xing,
+                lord: lord == "" ? null : lord,
+                describe: describe == "" ? null : describe
+            }),
+            success: function (result) {
+                $(location).attr("href", "/stars")
+            },
+            error: function (e) {
+                var el = `<div class="alert alert-warning alert-dismissible fade show" role="alert">${e.responseText}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
+                $(el).insertAfter("#container");
+            }
+        })
+    }
+    {% else %}
+    function update() {
+        var name = $("#name ").val()
+        var category_id = Number($("#category ").val())
+        var wu_xing = $("#wu_xing ").val()
+        var lord = $("#lord ").val()
+        var describe = $("#describe ").val()
+        $.ajax({
+            type: "put",
+            contentType: "Content-Type: application/json",
+            url: "/api/stars/{{ id }}",
+            data: JSON.stringify({
+                name,
+                category_id,
+                wu_xing,
+                lord: lord == "" ? null : lord,
+                describe: describe == "" ? null : describe
+            }),
+            success: function (result) {
+                $(location).attr("href", "/stars")
+            },
+            error: function (e) {
+                var el = `<div class="alert alert-warning alert-dismissible fade show" role="alert">${e.responseText}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
+                $(el).insertAfter("#container");
+            }
+        })
+    }
+    {% endif %}
+</script>
+{% endblock tab_content %}

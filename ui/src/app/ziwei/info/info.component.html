@@ -1,0 +1,118 @@
+<div class="content">
+  <div *ngIf="pan">
+    <div>
+      生时：{{ pan.native_date.year }}-{{ pan.native_date.month.toString().padStart(2,'0') }}-{{
+      pan.native_date.day.toString().padStart(2,'0') }} {{ pan.native_date.hour.toString().padStart(2,'0') }}:{{
+      pan.native_date.minute.toString().padStart(2,'0') }}:{{ pan.native_date.second.toString().padStart(2,'0') }}
+    </div>
+
+    <!-- 农历 -->
+    <div>
+      农历：{{ pan.native_lunar_calendar.lunar_year }}年{{ pan.native_lunar_calendar.lunar_month
+      }}{{ pan.native_lunar_calendar.lunar_day }} {{ pan.native_lunar_calendar.time_gan_zhi }}时
+    </div>
+
+    <!-- 四柱 -->
+    <div style="display: flex">
+      干支：
+      <div style="display: flex">
+        <div style="margin-right: 10px">
+          <div> {{ pan.native_lunar_calendar.lunar_year_gan_zhi[0] }}</div>
+          <div>{{ pan.native_lunar_calendar.lunar_year_gan_zhi [1]}}</div>
+        </div>
+        <div style="margin-right: 10px">
+          <div>{{ pan.native_lunar_calendar.lunar_month_gan_zhi[0] }}</div>
+          <div>{{ pan.native_lunar_calendar.lunar_month_gan_zhi[1] }}</div>
+        </div>
+        <div style="margin-right: 10px">
+          <div> {{ pan.native_lunar_calendar.lunar_day_gan_zhi[0] }} </div>
+          <div> {{ pan.native_lunar_calendar.lunar_day_gan_zhi[1] }} </div>
+        </div>
+        <div>
+          <div> {{ pan.native_lunar_calendar.time_gan_zhi[0] }}</div>
+          <div> {{ pan.native_lunar_calendar.time_gan_zhi[1] }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 节气 -->
+    <div style="display: flex">
+      节气：
+      <div style="display: flex; flex-direction: column">
+        <div>
+          {{ pan.native_lunar_calendar. solar_term_first.name }}: {{ pan.native_lunar_calendar.solar_term_first.year
+          }}-{{
+          pan.native_lunar_calendar.solar_term_first.month
+          }}-{{ pan.native_lunar_calendar.solar_term_first.day }} {{ pan.native_lunar_calendar.solar_term_first.hour
+          }}:{{
+          pan.native_lunar_calendar.solar_term_first.minute
+          }}:{{ pan.native_lunar_calendar.solar_term_first.second }}
+
+        </div>
+        <div>
+          {{ pan.native_lunar_calendar.solar_term_second.name }}:
+          {{ pan.native_lunar_calendar.solar_term_second.year }}-{{
+          pan.native_lunar_calendar.solar_term_second.month
+          }}-{{ pan.native_lunar_calendar.solar_term_second.day }}
+          {{ pan.native_lunar_calendar.solar_term_second.hour }}:{{
+          pan.native_lunar_calendar.solar_term_second.minute
+          }}:{{ pan.native_lunar_calendar.solar_term_second.second }}
+        </div>
+      </div>
+    </div>
+
+    <!-- 五行局 -->
+    <div> {{ sex }}：{{ wuXingNum }} </div>
+
+    <!-- 命主、身主、身宫 -->
+    <div>
+      <label style="margin-right: 20px">命主：{{ pan.lord }}</label>
+      <label style="margin-right: 20px">身主：{{ pan.shen_lord }}</label>
+      <label>身宫：{{ pan.shen_gong }}</label>
+    </div>
+
+    <!-- 流年 -->
+    <div>
+      流年：{{ pan.process_date.year }}-{{ pan.process_date.month.toString().padStart(2, "0") }}-{{
+      pan.process_date.day.toString().padStart(2, "0") }} {{ pan. process_date.hour.toString().padStart(2, "0")}}:{{
+      pan.process_date.minute.toString().padStart(2, "0") }}:{{ pan.process_date.second.toString().padStart(2, "0") }}
+    </div>
+
+     <!-- 农历 -->
+     <div>
+      农历：{{ pan.process_lunar_calendar.lunar_year }}年{{ pan.process_lunar_calendar.lunar_month
+      }}{{ pan.process_lunar_calendar.lunar_day }} {{ pan.process_lunar_calendar.time_gan_zhi }}时
+    </div>
+
+    <!-- 四柱 -->
+    <div style="display: flex">
+      干支：
+      <div style="display: flex">
+        <div style="margin-right: 10px">
+          <div> {{ pan.process_lunar_calendar.lunar_year_gan_zhi[0] }}</div>
+          <div>{{ pan.process_lunar_calendar.lunar_year_gan_zhi [1]}}</div>
+        </div>
+        <div style="margin-right: 10px">
+          <div>{{ pan.process_lunar_calendar.lunar_month_gan_zhi[0] }}</div>
+          <div>{{ pan.process_lunar_calendar.lunar_month_gan_zhi[1] }}</div>
+        </div>
+        <div style="margin-right: 10px">
+          <div> {{ pan.process_lunar_calendar.lunar_day_gan_zhi[0] }} </div>
+          <div> {{ pan.process_lunar_calendar.lunar_day_gan_zhi[1] }} </div>
+        </div>
+        <div>
+          <div> {{ pan.process_lunar_calendar.time_gan_zhi[0] }}</div>
+          <div> {{ pan.process_lunar_calendar.time_gan_zhi[1] }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 大运、小限、斗君 -->
+    <div>
+      <label style="margin-right: 10px">大运：{{ pan.primary_process }} </label>
+      <label style="margin-right: 10px">小限：{{ pan.profection }} </label>
+      <label style="margin-right: 10px">流月：{{ pan.liu_month }}</label>
+      <label>流日：{{ pan.liu_day }}</label>
+    </div>
+  </div>
+</div>

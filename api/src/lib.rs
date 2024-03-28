@@ -1,8 +1,9 @@
 pub mod args;
-pub mod handlers;
+mod error;
+mod handlers;
+mod request;
 pub mod routers;
 pub mod state;
 
-pub mod ziwei;
-
+#[cfg(feature = "swagger")]
 pub mod swagger;

@@ -1,17 +1,20 @@
-# Stage 0, "build-stage", based on Node.js, to build and compile the frontend
-FROM node:16.13.0 as build-stage
-WORKDIR /workspace
-COPY . .
+FROM node:18.19.1 as build-stage
 
-# RUN npm install --registry https://registry.npm.taobao.org
-RUN npm install
+WORKDIR /app
+COPY ./ /app/
 
-RUN npm run build:h5
+RUN npm install @ionic/cli -g --registry https://registry.npmmirror.com
+RUN npm install --registry https://registry.npmmirror.com --canvas_binary_host_mirror=https://registry.npmmirror.com/mirrors/node-canvas-prebuilt
 
-FROM nginx:1.23.0-alpine
+RUN ionic build --prod
 
+RUN gzip /app/www/*js && gzip /app/www/*css #  && gzip /app/www/*html
 
-COPY --from=build-stage /workspace/dist/build/h5  /usr/share/nginx/html
+FROM nginx:1.25.4-alpine
+
+# RUN rm -rf  /usr/share/nginx/html/*
+
+COPY --from=build-stage /app/www/ /usr/share/nginx/html
 
 #Copy default nginx configuration
 COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf

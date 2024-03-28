@@ -38,7 +38,7 @@ spec:
             [
               "/bin/sh",
               "-c",
-              "for i in {{ .Values.swe }};do wget -O /swe/$i https://www.astro.com/ftp/swisseph/ephe/$i;done",
+              "for i in {{ .Values.swe.files }};do wget -O /swe/$i {{ .Values.swe.uri }}/$i;done",
               ]
           volumeMounts:
             - name: swe
