@@ -16,12 +16,8 @@ export class PanComponent implements OnInit {
 
   pan: ZiWei | null = null;
 
-  // style = {
-  //   pan: {
   width = '800px';
   height = '800px';
-  //   },
-  // };
 
   isAlertOpen = false;
   alertButtons = ['OK'];
@@ -37,7 +33,10 @@ export class PanComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle(this.title);
+    this.getZiweiPan();
+  }
 
+  getZiweiPan() {
     this.loading = true;
     this.api.getZiwei(this.ziweiData).subscribe({
       next: (response) => (this.pan = response),
@@ -48,5 +47,39 @@ export class PanComponent implements OnInit {
       },
       complete: () => (this.loading = false),
     });
+  }
+
+  changeStep(step: {
+    year: number;
+    month: number;
+    day: number;
+    hour: number;
+    minute: number;
+    second: number;
+  }) {
+    let date = new Date(
+      this.ziweiData.process_date.year,
+      this.ziweiData.process_date.month - 1,
+      this.ziweiData.process_date.day,
+      this.ziweiData.process_date.hour,
+      this.ziweiData.process_date.minute,
+      this.ziweiData.process_date.second
+    );
+
+    date.setFullYear(date.getFullYear() + step.year);
+    date.setMonth(date.getMonth() + step.month);
+    date.setDate(date.getDate() + step.day);
+    date.setHours(date.getHours() + step.hour);
+    date.setMinutes(date.getMinutes() + step.minute);
+    date.setSeconds(date.getSeconds() + step.second);
+
+    this.ziweiData.process_date.year = date.getFullYear();
+    this.ziweiData.process_date.month = date.getMonth() + 1;
+    this.ziweiData.process_date.day = date.getDate();
+    this.ziweiData.process_date.hour = date.getHours();
+    this.ziweiData.process_date.minute = date.getMinutes();
+    this.ziweiData.process_date.second = date.getSeconds();
+
+    this.getZiweiPan();
   }
 }

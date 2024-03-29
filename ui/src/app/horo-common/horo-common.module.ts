@@ -7,10 +7,11 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 
 import { DateTimeComponent } from './date-time/date-time.component';
+import { DateTimeChangeComponent } from './date-time-change/date-time-change.component';
 
 @NgModule({
-  declarations: [DateTimeComponent],
+  declarations: [DateTimeComponent, DateTimeChangeComponent],
   imports: [CommonModule, IonicModule, FormsModule],
-  exports: [FormsModule, DateTimeComponent],
+  exports: [FormsModule, DateTimeComponent, DateTimeChangeComponent],
 })
 export class HoroCommonModule {}

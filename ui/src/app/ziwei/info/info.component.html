@@ -17,20 +17,20 @@
       干支：
       <div style="display: flex">
         <div style="margin-right: 10px">
-          <div> {{ pan.native_lunar_calendar.lunar_year_gan_zhi[0] }}</div>
-          <div>{{ pan.native_lunar_calendar.lunar_year_gan_zhi [1]}}</div>
+          <div style="line-height: 1;"> {{ pan.native_lunar_calendar.lunar_year_gan_zhi[0] }}</div>
+          <div style="line-height: 1;">{{ pan.native_lunar_calendar.lunar_year_gan_zhi [1]}}</div>
         </div>
         <div style="margin-right: 10px">
-          <div>{{ pan.native_lunar_calendar.lunar_month_gan_zhi[0] }}</div>
-          <div>{{ pan.native_lunar_calendar.lunar_month_gan_zhi[1] }}</div>
+          <div style="line-height: 1;">{{ pan.native_lunar_calendar.lunar_month_gan_zhi[0] }}</div>
+          <div style="line-height: 1;">{{ pan.native_lunar_calendar.lunar_month_gan_zhi[1] }}</div>
         </div>
         <div style="margin-right: 10px">
-          <div> {{ pan.native_lunar_calendar.lunar_day_gan_zhi[0] }} </div>
-          <div> {{ pan.native_lunar_calendar.lunar_day_gan_zhi[1] }} </div>
+          <div style="line-height: 1;"> {{ pan.native_lunar_calendar.lunar_day_gan_zhi[0] }} </div>
+          <div style="line-height: 1;"> {{ pan.native_lunar_calendar.lunar_day_gan_zhi[1] }} </div>
         </div>
         <div>
-          <div> {{ pan.native_lunar_calendar.time_gan_zhi[0] }}</div>
-          <div> {{ pan.native_lunar_calendar.time_gan_zhi[1] }}</div>
+          <div style="line-height: 1;"> {{ pan.native_lunar_calendar.time_gan_zhi[0] }}</div>
+          <div style="line-height: 1;"> {{ pan.native_lunar_calendar.time_gan_zhi[1] }}</div>
         </div>
       </div>
     </div>
@@ -66,9 +66,9 @@
 
     <!-- 命主、身主、身宫 -->
     <div>
-      <label style="margin-right: 20px">命主：{{ pan.lord }}</label>
-      <label style="margin-right: 20px">身主：{{ pan.shen_lord }}</label>
-      <label>身宫：{{ pan.shen_gong }}</label>
+      命主：{{ pan.lord }}
+      身主：{{ pan.shen_lord }}
+      身宫：{{ pan.shen_gong }}
     </div>
 
     <!-- 流年 -->
@@ -78,41 +78,33 @@
       pan.process_date.minute.toString().padStart(2, "0") }}:{{ pan.process_date.second.toString().padStart(2, "0") }}
     </div>
 
-     <!-- 农历 -->
-     <div>
+    <!-- 农历 -->
+    <div>
       农历：{{ pan.process_lunar_calendar.lunar_year }}年{{ pan.process_lunar_calendar.lunar_month
       }}{{ pan.process_lunar_calendar.lunar_day }} {{ pan.process_lunar_calendar.time_gan_zhi }}时
     </div>
 
     <!-- 四柱 -->
-    <div style="display: flex">
-      干支：
-      <div style="display: flex">
-        <div style="margin-right: 10px">
-          <div> {{ pan.process_lunar_calendar.lunar_year_gan_zhi[0] }}</div>
-          <div>{{ pan.process_lunar_calendar.lunar_year_gan_zhi [1]}}</div>
-        </div>
-        <div style="margin-right: 10px">
-          <div>{{ pan.process_lunar_calendar.lunar_month_gan_zhi[0] }}</div>
-          <div>{{ pan.process_lunar_calendar.lunar_month_gan_zhi[1] }}</div>
-        </div>
-        <div style="margin-right: 10px">
-          <div> {{ pan.process_lunar_calendar.lunar_day_gan_zhi[0] }} </div>
-          <div> {{ pan.process_lunar_calendar.lunar_day_gan_zhi[1] }} </div>
-        </div>
-        <div>
-          <div> {{ pan.process_lunar_calendar.time_gan_zhi[0] }}</div>
-          <div> {{ pan.process_lunar_calendar.time_gan_zhi[1] }}</div>
-        </div>
-      </div>
+    <div>
+      干支：{{ pan.process_lunar_calendar.lunar_year_gan_zhi }}
+      {{ pan.process_lunar_calendar.lunar_month_gan_zhi }}
+      {{ pan.process_lunar_calendar.lunar_day_gan_zhi }}
+      {{ pan.process_lunar_calendar.time_gan_zhi }}
     </div>
 
-    <!-- 大运、小限、斗君 -->
+    <!-- 大运、小限、流月、流日 -->
     <div>
-      <label style="margin-right: 10px">大运：{{ pan.primary_process }} </label>
-      <label style="margin-right: 10px">小限：{{ pan.profection }} </label>
-      <label style="margin-right: 10px">流月：{{ pan.liu_month }}</label>
-      <label>流日：{{ pan.liu_day }}</label>
+      大运：{{ pan.primary_process }}
+      小限：{{ pan.profection }}
+      流月：{{ pan.liu_month }}
+      流日：{{ pan.liu_day }}
+    </div>
+
+    <div style="text-align: center;">
+      <label class="gong_gan_lu">禄</label>->
+      <label class="gong_gan_quan">权</label>->
+      <label class="gong_gan_ke">科</label>->
+      <label class="gong_gan_ji">忌</label>
     </div>
   </div>
 </div>

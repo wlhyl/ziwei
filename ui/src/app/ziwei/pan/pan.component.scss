@@ -3,7 +3,10 @@ $heigth: 25%;
 
 .context {
     display: flex;
-    justify-content: center;
+    // justify-content: center;
+    flex-direction: column;
+    // align-content: center;
+    align-items: center;
 }
 
 .pan {

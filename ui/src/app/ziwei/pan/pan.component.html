@@ -39,9 +39,8 @@
       <app-house class="xu" [name]="pan.houses[8]" [gan]="pan.gong_gan[8]" zhi="戌" [stars]="pan.stars[8]"></app-house>
       <app-house class="hai" [name]="pan.houses[9]" [gan]="pan.gong_gan[9]" zhi="亥" [stars]="pan.stars[9]"></app-house>
       <app-info class="info" [pan]="pan"></app-info>
-
-
     </div>
+    <horo-date-time-change (chagedStep)="changeStep($event)"></horo-date-time-change>
   </div>
 
 
